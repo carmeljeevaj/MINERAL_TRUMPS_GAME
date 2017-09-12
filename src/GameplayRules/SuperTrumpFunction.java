@@ -20,12 +20,12 @@ Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
  */
 
 public class SuperTrumpFunction {
-    private static final int CARDS_TO_DEAL = 8 ;
+    private static final int CARDS_TO_DEAL = 8 ; //Number of cards to be dealt for each player.
     private int number_of_players;
     private Player[] players;
     private CardDeck deck;
     private int yourPlayerId;
-    private int randomDealer;
+    private int randomDealer;  // random dealer is notified to deal.
     private int startingPlay;
 
     public SuperTrumpFunction(int number_of_players) {
@@ -75,7 +75,7 @@ public class SuperTrumpFunction {
         System.out.println("Player: " + randomDealer + " is the dealer"+ "\n");
 
     }
-
+    // Method to deal random cards
     public void dealRandomCards() {
         players = new Player[number_of_players];
 
@@ -90,7 +90,7 @@ public class SuperTrumpFunction {
             player.setCard(cards);
         }
     }
-    //Converts to List to be handled by the GameRound Class
+    // Converts to List to be handled by the GameRound Class
     public ArrayList<Player> arrayToList(Player[] players){
         ArrayList<Player> newArrayList = new ArrayList<Player>();
         for (Player superTrumpsBasePlayer:players){

@@ -63,10 +63,10 @@ public class HumanHandler {
                     return currentPlayer.hand.get(userInput);
                 }
             } else {
-                System.out.println("Please choose a valid option"); // handles if user inputs greater than List
+                System.out.println("Please choose a valid option"); // handler, if user inputs greater than List.
             }
         }
 
-        return currentPlayer.hand.get(userInput);
+        return currentPlayer.hand.get(userInput);// returns the hand with userinput
     }
 }

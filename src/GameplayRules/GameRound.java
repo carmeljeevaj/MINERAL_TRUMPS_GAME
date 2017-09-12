@@ -138,7 +138,7 @@ public class GameRound {
         String currentCategory = null;
         if (currentPlayer.getPlayerType() == Player.PlayerType.HUMAN){
             currentCategory = new HumanHandler().getCategory(categories);
-            System.out.println("You have chosen: "+ currentCategory + " as Current Category.");
+            System.out.println("You have chosen: "+ currentCategory + " as Current Category."); // displays the category chosen by  player.
 
         }
         else
@@ -149,6 +149,7 @@ public class GameRound {
         return currentCategory;
 
     }
+    // delays for 550 milliseconds.
     public void sleep(){
         try {
             Thread.sleep(550);

@@ -30,7 +30,7 @@ public class TrumpsGameInitialize {
                     break;
                 case 3:
                     System.out.println("Goodbye!!!");
-                    System.exit(1);
+                    System.exit(1); // Exit game
                     break;
             }
         }
