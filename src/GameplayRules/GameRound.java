@@ -9,6 +9,12 @@ import Players.Player;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/*
+
+Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
+
+ */
+
 public class GameRound {
 
     private final ArrayList<Player> players;

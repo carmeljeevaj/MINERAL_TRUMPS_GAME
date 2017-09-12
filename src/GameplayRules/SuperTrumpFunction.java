@@ -1,3 +1,6 @@
+
+
+
 package GameplayRules;
 
 import Cards.Card;
@@ -8,6 +11,13 @@ import Players.Player;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+
+/*
+
+Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
+
+ */
 
 public class SuperTrumpFunction {
     private static final int CARDS_TO_DEAL = 8 ;

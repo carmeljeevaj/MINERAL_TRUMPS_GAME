@@ -1,5 +1,9 @@
 package Application;
+/*
 
+Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
+
+ */
 import GameplayRules.SuperTrumpFunction;
 
 import java.util.InputMismatchException;

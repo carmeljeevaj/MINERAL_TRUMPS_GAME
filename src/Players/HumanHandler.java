@@ -5,7 +5,11 @@ import Cards.TrumpCard;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/*
 
+Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
+
+ */
 public class HumanHandler {
 
     public String getCategory(String categories) {

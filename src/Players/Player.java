@@ -4,7 +4,11 @@ import Cards.Card;
 
 import java.util.ArrayList;
 
+/*
 
+Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
+
+ */
 public abstract class Player {
     public int position;
     public ArrayList<Card> hand;

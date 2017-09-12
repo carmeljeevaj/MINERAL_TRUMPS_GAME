@@ -6,6 +6,12 @@ import Cards.TrumpCard;
 
 import java.util.Random;
 
+/*
+
+Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
+
+ */
+
 public class ComputerFunction {
     public Card chooseCard(Card currentCard, String currentCat, Players.Player currentPlayer) {
         if (currentCard == null){
