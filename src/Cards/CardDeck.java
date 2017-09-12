@@ -15,7 +15,7 @@ public class CardDeck {
 
     public CardDeck() {
         cards = new ArrayList<>();
-
+        // Mineral Cards Initialization
         cards.add(new Cards.PlayCard("Slide01.jpg", "Slide01", "Quartz", "SiO_2", "tectosilicate", "hexagonal", "igneous, metamorphic, sedimentary", 7.00, 7.00, 2.65, 2.65, "poor/none", "high", "moderate"));
         cards.add(new Cards.PlayCard("Slide02.jpg", "Slide02", "Plagioclase", "Na Al Si_3 O_8 - Ca Al_2 Si_2 O_8", "tectosilicate", "triclinic", "igneous, metamorphic, sedimentary", 6, 6.5, 2.6, 2.8, "1 perfect, 1 good", "very high", "moderate"));
         cards.add(new Cards.PlayCard("Slide03.jpg", "Slide03", "Orthoclase", "K Al Si_3 O_3", "tectosilicate", "monoclinic", "igneous, metamorphic, sedimentary", 6, 6.5, 2.5, 2.6, "1 perfect, 1 good", "high", "moderate"));
