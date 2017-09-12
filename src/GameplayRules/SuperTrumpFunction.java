@@ -24,9 +24,9 @@ public class SuperTrumpFunction {
     private int number_of_players;
     private Player[] players;
     private CardDeck deck;
-    public int yourPlayerId;
-    public int randomDealer;
-    public int startingPlay;
+    private int yourPlayerId;
+    private int randomDealer;
+    private int startingPlay;
 
     public SuperTrumpFunction(int number_of_players) {
         deck = new CardDeck();
