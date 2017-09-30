@@ -1,6 +1,12 @@
 package Cards;
 
-public class TrumpCard extends Cards.Card {
+/*
+
+Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
+
+ */
+
+public class TrumpCard extends Card {
     public String subtitle;
     public String categories;
 
@@ -15,7 +21,7 @@ public class TrumpCard extends Cards.Card {
     }
 
     @Override
-    public boolean CompareValue(Cards.PlayCard card, String category) {
+    public boolean CompareValue(PlayCard card, String category) {
         return true;
     }
 }
