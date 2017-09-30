@@ -6,8 +6,8 @@ Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
  */
 import GameplayRules.SuperTrumpFunction;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class TrumpsGameInitialize {
 
@@ -65,7 +65,7 @@ public class TrumpsGameInitialize {
             System.out.println("The number of players must be valid.");
             No_of_Players = getTotalPlayers();
         }
-        SuperTrumpFunction new_game = new SuperTrumpFunction(No_of_Players);
+       //    SuperTrumpFunction new_game = new SuperTrumpFunction(No_of_Players);
 
     }
 
