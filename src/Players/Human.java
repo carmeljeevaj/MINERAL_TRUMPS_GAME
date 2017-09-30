@@ -5,7 +5,7 @@ Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
 
  */
 
-public class Human extends Players.Player {
+public class Human extends Player {
 
     public PlayerType getPlayerType() {
         return PlayerType.HUMAN;
