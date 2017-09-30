@@ -3,6 +3,8 @@ package GameplayRules;
 import Cards.Card;
 import Cards.CardDeck;
 import Cards.TrumpCard;
+import GUI.GameFunction;
+import Players.ComputerTr;
 import Players.HumanHandler;
 import Players.Player;
 
@@ -16,7 +18,7 @@ Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
  */
 
 public class GameRound {
-
+    private final GameFunction gameFunction;
     private final ArrayList<Player> players;
     private final ArrayList<Player> playersWhoWon;
     private Player currentPlayer;
@@ -25,7 +27,7 @@ public class GameRound {
     private final String currentCategory;
     private final RoundFinishedType roundFinishedType;
 
-    public GameRound(ArrayList<Player> players, CardDeck deck, ArrayList<Player> playersNotYetWon, ArrayList<Player> playersWhoWon, RoundFinished roundFinished) {
+    public GameRound(GameFunction gameFunction, ArrayList<Player> players, CardDeck deck, ArrayList<Player> playersNotYetWon, ArrayList<Player> playersWhoWon, RoundFinished roundFinished) {
         this.playersNotYetWon = playersNotYetWon;
         this.playersWhoWon = playersWhoWon;
         this.players = players;
@@ -33,16 +35,24 @@ public class GameRound {
         this.currentCategory = roundFinished.getCategory();
         this.roundFinishedType = roundFinished.getRoundFinishType();
         this.deck = deck;
+        this.gameFunction = gameFunction;
     }
 
     public RoundFinished beginRound() {
-        System.out.println("**************************************************");
+
         System.out.println("<<<<<<<<<<<<<< NEW ROUND COMMENCING >>>>>>>>>>>>>>");
-        System.out.println("**************************************************");
+
+        GameFunction.gameFunction.clearStatus();
+        GameFunction.gameFunction.changeMajorStatus("A NEW ROUND HAS STARTED");
+        gameFunction.displayPlayer(currentPlayer.toString());
+        gameFunction.displayCat(currentCategory);
+
         sleep();
+        GameFunction.gameFunction.clearMajorStatus();
         Card currentCard = null;
         if(roundFinishedType.equals(RoundFinishedType.STANDARD)){
             currentCard = findPickCard(currentPlayer, currentCategory, currentCard);
+            gameFunction.displayCard(currentCard.fileName);
             System.out.println("Player No :"+currentPlayer.position + " played the card: " + currentCard.toString());
             sleep();
             currentPlayer.hand.remove(currentCard);
@@ -55,10 +65,20 @@ public class GameRound {
         // Round Handler
         while (players.size() > 1){
             currentPlayer = players.get(0);
+            gameFunction.displayPlayer(currentPlayer.toString());
             Card oldCard = currentCard;
             currentCard = findPickCard(currentPlayer, currentCategory, currentCard);
+            try {
+                gameFunction.displayCard(currentCard.fileName);
+                gameFunction.displayPlayer(currentPlayer.toString());
+                gameFunction.displayCat(currentCategory);
+            }
+            catch (NullPointerException a){
+                gameFunction.displayCard("Slide66.jpg");
+            }
             if(oldCard == null && currentCard == null || oldCard!= null && currentCard.equals(oldCard)){
                 System.out.println("Player No: "+currentPlayer.position + " passed his turn and is removed from the round");
+                GameFunction.gameFunction.changeStatus(currentPlayer.position + " did not play a card and is removed from the round");
                 sleep();
                 players.remove(currentPlayer);
                 //Checks if the deck is empty upon drawing.
@@ -66,7 +86,9 @@ public class GameRound {
                 if(deck.count() > 0)
                     currentPlayer.hand.add(deck.takeCard());
                 else
-                    System.out.println("Deck is empty!");
+                    GameFunction.gameFunction.changeStatus("The Deck Is Empty");
+                    GameFunction.gameFunction.clearStatus();
+                    //System.out.println("Deck is empty!");
 
             } else if(currentCard instanceof TrumpCard){
                 System.out.println("Player: " + currentPlayer.position + " played the trump card: " + currentCard.toString());
@@ -78,6 +100,8 @@ public class GameRound {
             } else {
                 System.out.println("Player: " + currentPlayer.position + " played the card: " + currentCard.toString());
                 sleep();
+                gameFunction.displayPlayer(currentPlayer.toString());
+                gameFunction.displayCat(currentCategory);
                 currentPlayer.hand.remove(currentCard);
                 PlayerWinCheck(currentPlayer);
                 Collections.rotate(players, -1);
@@ -118,6 +142,9 @@ public class GameRound {
     private void PlayerWinCheck(Player currentPlayer) {
         if(currentPlayer.hand.size() == 0){
             System.out.println("Player: " + currentPlayer.position + " WON!");
+            if (currentPlayer.position ==0){
+                GameFunction.gameFunction.handGUIGenerator(currentPlayer.hand);
+            }
             playersNotYetWon.remove(currentPlayer);
             playersWhoWon.add(currentPlayer);
             players.remove(currentPlayer);
@@ -130,7 +157,7 @@ public class GameRound {
         }
         else
         if (currentPlayer.getPlayerType() == Player.PlayerType.COMPUTER){
-            currentCard = new ComputerFunction().chooseCard(currentCard, currentCat,currentPlayer);
+            currentCard = new ComputerTr().chooseCard(currentCard, currentCat,currentPlayer);
         }
         return currentCard;
     }
@@ -143,7 +170,7 @@ public class GameRound {
         }
         else
         if (currentPlayer.getPlayerType() == Player.PlayerType.COMPUTER) {
-            currentCategory = new ComputerFunction().choose_Category(categories);
+            currentCategory = new ComputerTr().chooseCategory(categories);
             System.out.println("\nPlayer: " + currentPlayer + " Has Chosen the Category:  " + currentCategory);
         }
         return currentCategory;
@@ -152,7 +179,7 @@ public class GameRound {
     // delays for 550 milliseconds.
     public void sleep(){
         try {
-            Thread.sleep(550);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
