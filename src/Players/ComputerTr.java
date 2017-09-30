@@ -1,5 +1,4 @@
-package GameplayRules;
-
+package Players;
 import Cards.Card;
 import Cards.PlayCard;
 import Cards.TrumpCard;
@@ -11,9 +10,9 @@ import java.util.Random;
 Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
 
  */
-
-public class ComputerFunction {
-    public Card chooseCard(Card currentCard, String currentCat, Players.Player currentPlayer) {
+public class ComputerTr {
+    // This is going to be basic bots, they just find what can be played, not much additional AI :P
+    public Card chooseCard(Card currentCard, String currentCat, Player currentPlayer) {
         if (currentCard == null){
             for (Card card : currentPlayer.hand){
                 if (card instanceof PlayCard){
@@ -29,7 +28,7 @@ public class ComputerFunction {
 
             }
             else
-            if (currentCard instanceof TrumpCard && card instanceof PlayCard){
+                if (currentCard instanceof TrumpCard && card instanceof PlayCard){
                 return card;
             }
 
@@ -46,9 +45,8 @@ public class ComputerFunction {
         return currentCard;
     }
 
-    public String choose_Category(String categories){
-        String[] select_Categories =  categories.split(", ");
-        return select_Categories[new Random().nextInt(select_Categories.length)];
+    public String chooseCategory(String categories){
+        String[] selectCat =  categories.split(", ");
+        return selectCat[new Random().nextInt(selectCat.length)];
     }
-
 }
