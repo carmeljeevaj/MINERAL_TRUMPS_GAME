@@ -5,12 +5,13 @@ package GameplayRules;
 
 import Cards.Card;
 import Cards.CardDeck;
+import GUI.GameFunction;
+import GUI.MenuSource;
 import Players.Computer;
 import Players.Human;
 import Players.Player;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 
 /*
@@ -24,11 +25,12 @@ public class SuperTrumpFunction {
     private int number_of_players;
     private Player[] players;
     private CardDeck deck;
-    private int yourPlayerId;
-    private int randomDealer;  // random dealer is notified to deal.
-    private int startingPlay;
 
-    public SuperTrumpFunction(int number_of_players) {
+    public int yourPlayerId;
+    public int randomDealer;  // random dealer is notified to deal.
+    public int startingPlay;
+
+    public SuperTrumpFunction(int number_of_players, GameFunction gameFunction) {
         deck = new CardDeck();
         this.number_of_players = number_of_players;
         System.out.println("Starting new game with " + number_of_players +" players.\n");
@@ -47,11 +49,15 @@ public class SuperTrumpFunction {
         ArrayList<Player> playersWon = new ArrayList<>();
         GameRound.RoundFinished roundFin = new GameRound.RoundFinished(GameRound.findCategory(startingPlayer, "Cleavage, Crustal abundance, Economic value, Hardness, Specific gravity"), startingPlayer, GameRound.RoundFinishedType.STANDARD);
         while(playersNotYetWon.size() > 1){
-            roundFin =  new GameRound(arrayToList(playersNotYetWon.toArray(new Player[playersNotYetWon.size()])) , deck, playersNotYetWon, playersWon,roundFin).beginRound();
+            roundFin =  new GameRound(gameFunction,arrayToList(playersNotYetWon.toArray(new Player[playersNotYetWon.size()])) , deck, playersNotYetWon, playersWon,roundFin).beginRound();
         }
         for(Player player: playersWon){
             System.out.println((playersWon.indexOf(player) +1) + "Place : Player " + player.position);
         }
+        GameFunction.gameFunction.buildWinners(playersWon);
+        sleeperfunc();
+        GameFunction.gameFunction.gameClear();
+        new MenuSource("New Game");
 
     }
 
@@ -97,5 +103,12 @@ public class SuperTrumpFunction {
             newArrayList.add(superTrumpsBasePlayer);
         }
         return newArrayList;
+    }
+    public void sleeperfunc(){
+        try {
+            Thread.sleep(9000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
