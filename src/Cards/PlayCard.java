@@ -1,7 +1,11 @@
 package Cards;
 
+/*
 
-public class PlayCard extends Cards.Card {
+Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
+
+ */
+public class PlayCard extends Card {
     public String chemistry;
     public String classification;
     public String crystalSystem;
@@ -33,7 +37,7 @@ public class PlayCard extends Cards.Card {
     }
 
     public String toString() {
-        return ("\n <<<<<<< MINERAL CARD >>>>>> \n" + "--------Name: "+title+ "\n--------Chemistry: " +chemistry + "\n--------Classification: " +classification + "\n--------Crystal System: "+ crystalSystem + "\n--------Occurrence: "+occurrence +"\n ================================" + "\n--------Hardness: " + high_hardness +"\n--------Specific Gravity: "+ high_Specific_Gravity +"\n--------Cleavage: "+cleavage+"\n--------Crustal Abundance: "+ crustal_Abundance +"\n--------Economic Value: "+ economic_Value +"\n <<<<<<< *********** >>>>>>>\n");
+        return ("\n <<<<<<< MINERAL CARD >>>>>> \n"+" --------Chemistry: " +chemistry + "\n--------Classification: " +classification + "\n--------Crystal System: "+ crystalSystem + "\n--------Occurrence: "+occurrence +"\n ================================" + "\n--------Hardness: " + high_hardness +"\n--------Specific Gravity: "+ high_Specific_Gravity +"\n--------Cleavage: "+cleavage+"\n--------Crustal Abundance: "+ crustal_Abundance +"\n--------Economic Value: "+ economic_Value +"\n <<<<<<< *********** >>>>>>>\n");
     }
 
 
