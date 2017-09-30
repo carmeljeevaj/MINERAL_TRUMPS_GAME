@@ -1,5 +1,11 @@
 package Cards;
 
+/*
+
+Mineral SuperTrumps Card Game by 13422239 (CARMELJEEVA JOHNJEYASEELAN);
+
+ */
+
 public abstract class Card {
 
     public String fileName;
@@ -19,5 +25,5 @@ public abstract class Card {
         return(fileName + " " + imageName + " " + title);
     }
 
-    public abstract boolean CompareValue(Cards.PlayCard card, String category);
+    public abstract boolean CompareValue(PlayCard card, String category);
 }
